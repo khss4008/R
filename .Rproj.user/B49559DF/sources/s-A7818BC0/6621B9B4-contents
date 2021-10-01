@@ -148,10 +148,34 @@ str(exam)
 summary(exam)   #요약 통계
 
 
+#뷰어창에서 데이터 확인 View ( V가 대문자)
+View(exam)
 
 
 
 
+library(ggplot2)
+
+mpg = as.data.frame(ggplot2::mpg)
+
+head(mpg)
+tail(mpg, 10)
+dim(mpg)
+str(mpg)
+summary(mpg)
+View(mpg)
+
+#데이터에 관한 설명 보기
+?mpg
+
+df_raw = data.frame(var1 = c(1,2,1), var2 = c(2,3,2))
+df_raw
+
+install.packages("dplyer")  #데이터 가공에 사용되는 패키지
+library(dplyer)
+
+
+R.version
 
 
 
