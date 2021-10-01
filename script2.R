@@ -171,11 +171,101 @@ View(mpg)
 df_raw = data.frame(var1 = c(1,2,1), var2 = c(2,3,2))
 df_raw
 
-install.packages("dplyer")  #데이터 가공에 사용되는 패키지
-library(dplyer)
-
+install.packages("dplyr")  #데이터 가공에 사용되는 패키지
+library(dplyr)
 
 R.version
+
+df_new <-df_raw
+
+df_new <-rename(df_new,v2=var2)
+
+df_new
+
+mpg_new <- mpg
+
+mpg_new <- rename(mpg,city =cty,highway =hwy)
+
+View(mpg_new)
+
+#파생변수 만들기
+
+df <- df_raw
+
+df$sum <- df$var1+df$var2
+
+df
+
+mpg_new$total  <- (mpg_new$city+mpg_new$highway)/2
+
+mean(mpg_new$total)
+
+#조건문을 활용해서 파생변수 만들자
+
+summary(mpg_new$total)
+
+hist(mpg_new$total)
+
+mpg_new$test = ifelse(mpg_new$total >= 20, "pass", "fail")
+
+head(mpg_new,20)
+
+table(mpg_new$test)
+
+install.packages("ggplot2")
+library(ggplot2)
+qplot(mpg_new$test)
+
+# QUIZ 30 이상이면 A 20 이상이면 B 20 미만은 C 이름은 grade
+
+
+mpg_new$test = ifelse(mpg_new$total >= 30, "A", ifelse(mpg_new$total >=20, "B", "C")
+
+table(mpg_new)
+
+
+
+
+
+#종합 QUIZ
+#1. ggplot2의 midwest를 데이터프레임으로 가져와서 데이터의 특성을 파악하자 6개
+mid <- data.frame(ggplot2::midwest)
+head(mid)
+tail(mid)
+dim(mid)
+str(mid)
+summary(mid)
+View(mid)
+
+
+
+#2. poptotal 변수명을 total로 변경 popasian을 asian으로
+names(mid)[1] = c("total2")
+names(mid)[5] = c("total")
+names(mid)[10] = c("popasian")
+head(mid)
+
+#mii <- rename(midwest, total = poptotal) 이런 식으로도 가능하다
+
+#3. total과 asian 변수로 전체 인구 대비 아시아 인구 백분율을 파생변수로 만들어서 히스토그램 그리기
+mid$popr <- mid$asian/ mid$total * 100
+hist(midwest$popr)
+#4. 아시아 인구 백분율의 평균을 구하고 그 평균을 초과하면 large아니면 small 파생변수 생성
+mean(midwest$popr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
