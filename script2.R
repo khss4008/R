@@ -178,7 +178,7 @@ R.version
 
 df_new <-df_raw
 
-df_new <-rename(df_new,v2=var2)
+df_new <-rename(df_raw,v2=var2)
 
 df_new
 

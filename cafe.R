@@ -121,7 +121,7 @@ head(sales)
 table(sales$season)
 
 # 시각화
-
+sales2
 cate = data.frame(table(sales$category))
 cate
 
@@ -133,7 +133,7 @@ ggplot(cate, aes(Var1, Freq)) +
 
 #요일별 판매건수 시각화.
 
-cate2 = data.frame(table(sales2$nalsi))
+cate2 = data.frame(table(sales2$weekday))
 cate2
 ggplot(cate2, aes(Var1, Freq))+
   geom_col()+
